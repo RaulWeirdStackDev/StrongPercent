@@ -7,7 +7,8 @@ self.addEventListener('install', (event) => {
           '/kilos.html',
           '/pesas.js',
           '/style.css',
-         '/logo.png'
+         '/logo.png',
+          '/manifest.json',
         ]);
       })
     );

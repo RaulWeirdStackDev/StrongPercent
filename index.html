@@ -6,7 +6,7 @@
     <title>Calculadora de Porcentajes para Pesas</title>
     <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
-    <link rel="manifest" href="./manifest.json">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <button id="installButton" style="display: none; margin: 10px; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Instalar StrongPercent</button>
@@ -59,6 +59,7 @@
 
         // Escuchar el evento beforeinstallprompt
         window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('beforeinstallprompt fired')
             // Evitar que Chrome muestre la notificación automática (opcional)
             e.preventDefault();
             // Guardar el evento para usarlo después
