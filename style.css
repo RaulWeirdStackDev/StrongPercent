@@ -16,6 +16,7 @@ body{
     margin-inline: 10px;
 }
 
+
 header{
     display: flex;
     flex-direction: column;
@@ -76,4 +77,11 @@ footer{
     font-size: 0.8rem;
     text-align: center;
     padding: 10px;
+}
+
+#theme {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
 }
