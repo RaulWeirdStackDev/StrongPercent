@@ -5,7 +5,7 @@ const calcular = document.querySelector("#calcular");
 const body = document.querySelector("body");
 const navLinks= document.querySelectorAll("a")
 
-const calcularPorcentaje= () => {
+const calcularPeso= () => {
     const total = (peso.value * porcentje.value) / 100;
     resultado.textContent = "El peso es de: " + total + "kg";
 };

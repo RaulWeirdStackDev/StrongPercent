@@ -56,7 +56,10 @@ nav ul {
     justify-content: center;
     list-style: none;
     padding: 0;
+}
 
+nav ul li {
+    margin-block: 15px;
 }
 
 nav a:hover {
@@ -64,9 +67,6 @@ nav a:hover {
     background-color: white;
 }
 
-#peso{
-    margin-block: 10px;
-}
 
 #porcentaje{
     margin-block: 10px;
