@@ -5,13 +5,12 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             return cache.addAll([
-                '/',
-                '/index.html',
-                '/kilos.html',
-                '/pesas.js',
-                '/style.css',
-                '/logo.png',
-                '/manifest.json',
+                './',
+                './kilos.html',
+                './pesas.js',
+                './style.css',
+                './logo.png',
+                './manifest.json',
             ]);
         })
     );
