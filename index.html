@@ -90,17 +90,17 @@
         });
 
         // Registrar el Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js', { scope: './' })
-                    .then(registration => {
-                        console.log('Service Worker registrado:', registration);
-                    })
-                    .catch(error => {
-                        console.error('Error al registrar el Service Worker:', error);
-                    });
-            });
-        }
+if (
+  'serviceWorker' in navigator &&
+  location.protocol === 'https:' &&
+  !location.hostname.includes('localhost') &&
+  location.hostname !== '127.0.0.1'
+) {
+  navigator.serviceWorker
+    .register('./sw.js', { scope: './' })
+    .then(reg => console.log('Service Worker registrado con éxito:', reg.scope))
+    .catch(err => console.error('Error al registrar el Service Worker:', err));
+}
     </script>
 </body>
 </html>
