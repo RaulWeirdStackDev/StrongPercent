@@ -1,8 +1,8 @@
 {
   "name": "StrongPercent",
   "short_name": "Pesas",
-  "start_url": "/Proyectos%20Web/Productos/StrongPercent/index.html",
-  "scope": "/Proyectos%20Web/Productos/StrongPercent/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#007bff",
