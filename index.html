@@ -6,6 +6,7 @@
     <meta name="theme-color" content="#007bff">
     <title>Calculadora de Porcentajes para Pesas</title>
     <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./logo.png">
     <link rel="stylesheet" href="./style.css">
     <link rel="manifest" href="./manifest.json">
 </head>
@@ -92,12 +93,7 @@
         });
 
         // Registrar el Service Worker
-if (
-  'serviceWorker' in navigator &&
-  location.protocol === 'https:' &&
-  !location.hostname.includes('localhost') &&
-  location.hostname !== '127.0.0.1'
-) {
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker
     .register('./sw.js', { scope: './' })
     .then(reg => console.log('Service Worker registrado con éxito:', reg.scope))
