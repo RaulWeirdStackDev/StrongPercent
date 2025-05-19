@@ -1,5 +1,5 @@
 const CACHE_NAME = 'strongpercent-v1';
-const VERSION = '1.0.0'; // Change this version number when you want to force an update
+const VERSION = '1.0.0';
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
@@ -11,7 +11,7 @@ self.addEventListener('install', (event) => {
                 './pesas.js',
                 './style.css',
                 './logo.png',
-                './manifest.json',
+                './manifest.json'
             ]);
         })
     );
@@ -28,10 +28,8 @@ self.addEventListener('activate', (event) => {
                 })
             );
         }).then(() => {
-            // Ensure the new service worker takes control immediately
             return self.clients.claim();
         }).then(() => {
-            // Notify all clients to reload if a new version is active
             return self.clients.matchAll().then((clients) => {
                 clients.forEach((client) => {
                     client.postMessage({ type: 'UPDATE_AVAILABLE', version: VERSION });
@@ -49,7 +47,6 @@ self.addEventListener('fetch', (event) => {
     );
 });
 
-// Listen for messages from the page to handle updates
 self.addEventListener('message', (event) => {
     if (event.data && event.data.type === 'SKIP_WAITING') {
         self.skipWaiting();
