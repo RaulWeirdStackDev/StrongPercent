@@ -6,6 +6,7 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE_NAME).then((cache) => {
             return cache.addAll([
                 './',
+                './index.html',
                 './kilos.html',
                 './pesas.js',
                 './style.css',
