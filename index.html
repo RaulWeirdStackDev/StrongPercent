@@ -11,21 +11,18 @@
     <link rel="manifest" href="./manifest.json">
 </head>
 <body>
-    <button id="installButton" style="display: none; margin: 10px; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Instalar StrongPercent</button>
+    <button id="installButton">Instalar StrongPercent</button>
+    <p id="iosInstall" style="display: none;">Para instalar en iOS, toca el ícono de compartir y selecciona "Agregar a la pantalla de inicio".</p>
     <button onclick="theme()" id="theme">Cambiar Tema</button>
     <header>
         <img src="./logo.png" alt="logo">
-    <h1>Calculadora de Porcentajes para Levantamiento de Pesas</h1>
-    <nav>
-        <ul>
-            <li>
-                <a href="./index.html">Calcula el peso que necesitas</a>
-            </li>
-            <li>
-                <a href="./kilos.html">Convertir de libras a kilos</a>
-            </li>
-        </ul>
-    </nav>
+        <h1>Calculadora de Porcentajes para Levantamiento de Pesas</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Calcula el peso que necesitas</a></li>
+                <li><a href="./kilos.html">Convertir de libras a kilos</a></li>
+            </ul>
+        </nav>
     </header>
     <input type="text" id="peso" placeholder="Peso en kg" />
     <select name="porcentaje" id="porcentaje">
@@ -55,50 +52,53 @@
         <option value="145">145%</option>
         <option value="150">150%</option>
     </select>
-    <button id="calcular" onclick=calcularPeso()>Calcular</button>
+    <button id="calcular" onclick="calcularPeso()">Calcular</button>
     <p id="resultado"></p>
     <footer>Desarrollado por Raúl Rodríguez Clavero, 2025</footer>
-<script src="./pesas.js"></script>
+    <script src="./pesas.js"></script>
     <script>
-        // Variable para almacenar el evento de instalación
         let deferredPrompt;
-
-        // Escuchar el evento beforeinstallprompt
         window.addEventListener('beforeinstallprompt', (e) => {
-            console.log('beforeinstallprompt fired')
-            // Evitar que Chrome muestre la notificación automática (opcional)
+            console.log('beforeinstallprompt fired');
             e.preventDefault();
-            // Guardar el evento para usarlo después
             deferredPrompt = e;
-            // Mostrar el botón de instalación
             const installButton = document.getElementById('installButton');
-            installButton.style.display = 'block';
-            // Manejar el clic en el botón
-            installButton.addEventListener('click', () => {
-                // Mostrar el prompt de instalación
-                deferredPrompt.prompt();
-                // Esperar la respuesta del usuario
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('Usuario aceptó instalar la PWA');
+            if (installButton) {
+                installButton.style.display = 'block';
+                installButton.addEventListener('click', () => {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        deferredPrompt.userChoice.then((choiceResult) => {
+                            if (choiceResult.outcome === 'accepted') {
+                                console.log('Usuario aceptó instalar la PWA');
+                            } else {
+                                console.log('Usuario rechazó instalar la PWA');
+                            }
+                            deferredPrompt = null;
+                            installButton.style.display = 'none';
+                        }).catch(err => {
+                            console.error('Error en el prompt de instalación:', err);
+                        });
                     } else {
-                        console.log('Usuario rechazó instalar la PWA');
+                        console.error('No hay un prompt de instalación disponible');
                     }
-                    // Limpiar el evento
-                    deferredPrompt = null;
-                    // Ocultar el botón después de la instalación
-                    installButton.style.display = 'none';
                 });
-            });
+            } else {
+                console.error('Botón de instalación no encontrado');
+            }
         });
 
-        // Registrar el Service Worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('./sw.js', { scope: './' })
-    .then(reg => console.log('Service Worker registrado con éxito:', reg.scope))
-    .catch(err => console.error('Error al registrar el Service Worker:', err));
-}
-    </script>   
+        if (navigator.userAgent.includes('iPhone') || navigator.userAgent.includes('iPad')) {
+            document.getElementById('iosInstall').style.display = 'block';
+            document.getElementById('installButton').style.display = 'none';
+        }
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('./sw.js', { scope: './' })
+                .then(reg => console.log('Service Worker registrado con éxito:', reg.scope))
+                .catch(err => console.error('Error al registrar el Service Worker:', err));
+        }
+    </script>
 </body>
 </html>
