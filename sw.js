@@ -4,15 +4,17 @@ const VERSION = '1.0.0';
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll([
-                './',
-                './index.html',
-                './kilos.html',
-                './pesas.js',
-                './style.css',
-                './logo.png',
-                './manifest.json'
-            ]);
+   return cache.addAll([
+    './',
+    './index.html',
+    './kilos.html',
+    './pesas.js',
+    './style.css',
+    './logo.png',
+    './logo192.png',
+    './logo512.png',
+    './manifest.json'
+]);
         })
     );
 });
