@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad – StrongPercent</title>
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset total — sin dependencia de style.css ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── Tokens tema claro ── */
+        :root {
+            --accent:        #007bff;
+            --accent-dim:    rgba(0,123,255,0.10);
+            --accent-border: rgba(0,123,255,0.22);
+            --bg:            #f4f6fb;
+            --surface:       #ffffff;
+            --border:        #dde1ec;
+            --text:          #1a1a2e;
+            --text-body:     #2e2e45;
+            --muted:         #5a5a72;
+            --warn-bg:       #fffbf0;
+            --warn-border:   #e8c840;
+            --warn-text:     #5c4700;
+            --hl-text:       #1a3a6e;
+        }
+
+        /* ── Tokens tema oscuro ── */
+        [data-theme="dark"] {
+            --accent:        #4da3ff;
+            --accent-dim:    rgba(77,163,255,0.12);
+            --accent-border: rgba(77,163,255,0.25);
+            --bg:            #0f1117;
+            --surface:       #1a1d27;
+            --border:        #2a2e3e;
+            --text:          #e8eaf0;
+            --text-body:     #c8cad8;
+            --muted:         #7a7c94;
+            --warn-bg:       #1e1a08;
+            --warn-border:   #7a6010;
+            --warn-text:     #d4aa40;
+            --hl-text:       #90bfff;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 300;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* ── Topbar ── */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1.5rem;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-back::before { content: "←"; }
+        .nav-back:hover { color: var(--accent); }
+
+        /* ── Theme toggle ── */
+        .theme-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        .theme-btn-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            user-select: none;
+        }
+        .track {
+            width: 36px; height: 20px;
+            border-radius: 10px;
+            background: var(--border);
+            position: relative;
+            transition: background 0.3s;
+        }
+        [data-theme="dark"] .track { background: var(--accent); }
+        .knob {
+            position: absolute;
+            top: 3px; left: 3px;
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        [data-theme="dark"] .knob { transform: translateX(16px); }
+
+        /* ── Contenido ── */
+        .privacy-wrap {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem 5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 3px;
+            padding: 2px 8px;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-wrap h1 {
+            font-weight: 600;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            line-height: 1.2;
+            margin-bottom: 0.35rem;
+        }
+
+        .update-date {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.74rem;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 2rem;
+        }
+
+        .intro {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--muted);
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* ── Secciones ── */
+        .section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.4rem 1.6rem;
+            margin-bottom: 1rem;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .section h2 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+
+        .section p {
+            font-size: 0.93rem;
+            line-height: 1.78;
+            color: var(--text-body);
+            margin-bottom: 0.5rem;
+        }
+        .section p:last-child { margin-bottom: 0; }
+
+        .section strong { font-weight: 600; color: var(--text); }
+
+        /* ── Cajas ── */
+        .box-blue {
+            background: var(--accent-dim);
+            border: 1px solid var(--accent-border);
+            border-radius: 6px;
+            padding: 0.85rem 1.1rem;
+            margin-top: 0.75rem;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: var(--hl-text);
+        }
+
+        .box-yellow {
+            background: var(--warn-bg);
+            border: 1px solid var(--warn-border);
+            border-radius: 6px;
+            padding: 0.85rem 1.1rem;
+            margin-top: 0.75rem;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: var(--warn-text);
+        }
+
+        a.lnk {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        a.lnk:hover { border-color: var(--accent); }
+
+        /* ── Footer ── */
+        .pfooter {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--muted);
+        }
+        .pfooter a { color: var(--accent); text-decoration: none; }
+
+        /* ── Responsive ── */
+        @media (max-width: 480px) {
+            .topbar { padding: 0.65rem 1rem; }
+            .privacy-wrap { padding: 1.6rem 1rem 4rem; }
+            .section { padding: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topbar">
+        <a href="./index.html" class="nav-back">Volver a la app</a>
+        <button class="theme-btn" onclick="toggleTheme()" aria-label="Cambiar tema">
+            <span class="theme-btn-label" id="theme-label">Claro</span>
+            <div class="track"><div class="knob"></div></div>
+        </button>
+    </div>
+
+    <div class="privacy-wrap">
+        <span class="badge">Política de Privacidad</span>
+        <h1>StrongPercent</h1>
+        <span class="update-date">Última actualización: mayo 2025</span>
+
+        <p class="intro">
+            Esta política explica de forma clara cómo funciona StrongPercent en relación con tus datos y la publicidad que aparece en la aplicación.
+        </p>
+
+        <div class="section">
+            <h2>1. Datos que recopilamos</h2>
+            <p>StrongPercent <strong>no recopila, almacena ni procesa ningún dato personal</strong> de sus usuarios. No hay registro de cuentas, no se solicita nombre, correo electrónico, ni ninguna otra información personal.</p>
+            <div class="box-blue">
+                <strong>Resumen:</strong> Los cálculos que realizas en la app se ejecutan íntegramente en tu dispositivo. Ningún dato sale de él ni es enviado a ningún servidor nuestro.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2. Cookies y almacenamiento local</h2>
+            <p>La aplicación no utiliza cookies propias. El único almacenamiento local que puede existir corresponde a la preferencia de tema (claro/oscuro) guardada en el navegador para mejorar tu experiencia, y no contiene datos personales de ningún tipo.</p>
+        </div>
+
+        <div class="section">
+            <h2>3. Publicidad – Google AdSense</h2>
+            <p>StrongPercent muestra publicidad a través de <strong>Google AdSense</strong>, un servicio de terceros operado por Google LLC. Google puede utilizar cookies y tecnologías similares para mostrar anuncios basados en tus visitas anteriores a este u otros sitios web.</p>
+            <div class="box-yellow">
+                <strong>Lo que esto significa para ti:</strong> Google, como proveedor externo, usa cookies publicitarias (como la cookie de DoubleClick) para mostrar anuncios relevantes. Puedes optar por no recibir publicidad personalizada en <a class="lnk" href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Configuración de anuncios de Google</a> o en <a class="lnk" href="https://www.aboutads.info" target="_blank" rel="noopener">aboutads.info</a>.
+            </div>
+            <p style="margin-top:0.75rem;">Para más información sobre cómo Google gestiona los datos en su red publicitaria, consulta la <a class="lnk" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a>.</p>
+        </div>
+
+        <div class="section">
+            <h2>4. Servicios de terceros</h2>
+            <p>Fuera de Google AdSense, StrongPercent no integra ningún otro servicio de terceros (analíticas, rastreo, redes sociales, etc.).</p>
+        </div>
+
+        <div class="section">
+            <h2>5. Menores de edad</h2>
+            <p>Esta aplicación no está dirigida a menores de 13 años. Dado que no recopilamos datos de ningún usuario, no existe riesgo de tratamiento de datos de menores. Sin embargo, el uso de Google AdSense puede implicar tecnologías de publicidad sujetas a las políticas propias de Google respecto a menores.</p>
+        </div>
+
+        <div class="section">
+            <h2>6. Cambios a esta política</h2>
+            <p>Podemos actualizar esta política ocasionalmente. La fecha de "última actualización" al inicio de esta página refleja siempre la versión vigente. Te recomendamos revisarla periódicamente.</p>
+        </div>
+
+        <div class="section">
+            <h2>7. Contacto</h2>
+            <p>Si tienes preguntas sobre esta política de privacidad, puedes contactarnos a través de:<br>
+            <a class="lnk" href="http://raulrodriguez.cl/" target="_blank" rel="noopener">raulrodriguez.cl</a></p>
+        </div>
+
+        <div class="pfooter">
+            Desarrollado por <a href="http://raulrodriguez.cl/" target="_blank" rel="noopener">Raúl Rodríguez – Soluciones Informáticas</a>, 2025
+        </div>
+    </div>
+
+    <script>
+        // Aplicar tema guardado o preferencia del sistema antes de pintar
+        (function () {
+            var saved = localStorage.getItem('sp-theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var theme = saved ? saved : (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+            var lbl = document.getElementById('theme-label');
+            if (lbl) lbl.textContent = theme === 'dark' ? 'Oscuro' : 'Claro';
+        })();
+
+        function toggleTheme() {
+            var html = document.documentElement;
+            var current = html.getAttribute('data-theme');
+            var next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('sp-theme', next);
+            document.getElementById('theme-label').textContent = next === 'dark' ? 'Oscuro' : 'Claro';
+        }
+    </script>
+</body>
+</html>
