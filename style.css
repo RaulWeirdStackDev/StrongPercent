@@ -81,10 +81,12 @@ footer{
     font-size: 0.8rem;
     text-align: center;
     padding: 10px;
+    width: 100%;
 }
 
 footer a {
     text-decoration: none;
+    color: white;
 }
 
 #theme {
