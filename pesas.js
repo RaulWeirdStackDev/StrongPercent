@@ -15,6 +15,11 @@ const libras= () =>  {
     resultado.textContent = "El peso es de: " + total + "kg";
 };
 
+const kilos = () => {
+    const total = peso.value / 0.453592;
+    resultado.textContent = "El peso es de: " + total + " libras";
+};
+
 const theme = () => {
     const currentBg = getComputedStyle(body).backgroundColor;
 
