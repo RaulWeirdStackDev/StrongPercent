@@ -4,20 +4,20 @@
   box-sizing: border-box;
 }
 
-body{
-    height: 100dvh;
-    max-width: 100vw;
+body {
+    min-height: 100dvh; /* Cambiado de height a min-height para permitir scroll con el nuevo texto */
+    max-width: 600px;   /* Limita el ancho en PC para que no se desarme la estructura */
+    margin: 0 auto;     /* Centra todo el sitio en pantallas grandes */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     background-color: #141212;
     color: white;
-    margin-inline: 10px;
+    padding-inline: 15px;
+    padding-top: 60px;  /* Espacio para que el botón de tema no tape el header */
 }
 
-
-header{
+header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,19 +25,18 @@ header{
     text-align: center;
 }
 
-header h1{
+header h1 {
     font-size: 1.7rem;
     margin: 0;
     margin-bottom: 20px;
-    
 }
 
-header img{
-    width: 200px;
-    height: 200px;
+header img {
+    width: 150px; /* Un pelo más pequeña para optimizar espacio en móviles */
+    height: 150px;
 }
 
-nav{
+nav {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -49,6 +48,9 @@ nav a {
     color: white;
     text-decoration: none;
     margin: 0 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
 }
 
 nav ul {
@@ -63,31 +65,111 @@ nav ul li {
 }
 
 nav a:hover {
-    color: #141212;;
+    color: #141212;
     background-color: white;
 }
 
-
-#porcentaje{
-    margin-block: 10px;
+/* Estilos de inputs existentes */
+#peso, #porcentaje, #calcular {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin-block: 8px;
+    border-radius: 6px;
+    border: 1px solid #333;
 }
+
+#resultado {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-block: 15px;
+    color: #007bff; /* Color de acento para el resultado */
+}
+
+/* ===================================================
+   🔥 NUEVOS ESTILOS LLAMATIVOS PARA CONTENT-INFO
+   =================================================== */
+.content-info {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #1c1a1a; /* Un gris sutilmente más claro que el fondo para hacer contraste */
+    border-radius: 12px;
+    border-left: 4px solid #007bff; /* Línea de acento azul */
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.content-info h2 {
+    font-size: 1.3rem;
+    color: #007bff;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.content-info h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.content-info p {
+    font-size: 0.95rem;
+    color: #ccc; /* Gris claro para que la lectura sea descansada */
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.content-info ul {
+    list-style: none; /* Quitamos los puntos por defecto */
+    padding: 0;
+    margin-top: 10px;
+}
+
+.content-info ul li {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    padding-left: 15px;
+    position: relative;
+}
+
+/* Viñetas personalizadas y modernas en vez del punto aburrido */
+.content-info ul li::before {
+    content: "•";
+    color: #007bff; /* Puntos azules */
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.content-info strong {
+    color: #fff; /* Que los textos importantes resalten en blanco puro */
+}
+
+/* =================================================== */
 
 footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: auto;
+    margin-top: auto; /* Empuja el footer al fondo si el contenido es corto */
     font-size: 0.8rem;
     text-align: center;
-    padding: 10px;
+    padding: 20px 10px 10px 10px;
     width: 100%;
     gap: 4px;
 }
 
 footer a {
     text-decoration: none;
-    color: white;
+    color: #007bff;
 }
 
 #theme {
@@ -95,6 +177,21 @@ footer a {
     top: 10px;
     left: 10px;
     z-index: 999;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background: #222;
+    color: #fff;
+    border: 1px solid #444;
+    cursor: pointer;
 }
 
-#installButton{margin-top: 10px;}
+#installButton {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
