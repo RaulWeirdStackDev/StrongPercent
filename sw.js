@@ -1,5 +1,5 @@
 const CACHE_NAME = 'strongpercent-v1';
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
@@ -8,6 +8,7 @@ self.addEventListener('install', (event) => {
     './',
     './index.html',
     './kilos.html',
+    './libras.html',
     './pesas.js',
     './style.css',
     './logo.png',
