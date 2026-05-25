@@ -248,10 +248,7 @@
 
     <div class="topbar">
         <a href="/" class="nav-back">Volver a la app</a>
-        <button class="theme-btn" onclick="toggleTheme()" aria-label="Cambiar tema">
-            <span class="theme-btn-label" id="theme-label">Claro</span>
-            <div class="track"><div class="knob"></div></div>
-        </button>
+
     </div>
 
     <div class="privacy-wrap">
@@ -315,25 +312,5 @@
         </div>
     </div>
 
-    <script>
-        // Aplicar tema guardado o preferencia del sistema antes de pintar
-        (function () {
-            var saved = localStorage.getItem('sp-theme');
-            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            var theme = saved ? saved : (prefersDark ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
-            var lbl = document.getElementById('theme-label');
-            if (lbl) lbl.textContent = theme === 'dark' ? 'Oscuro' : 'Claro';
-        })();
-
-        function toggleTheme() {
-            var html = document.documentElement;
-            var current = html.getAttribute('data-theme');
-            var next = current === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('sp-theme', next);
-            document.getElementById('theme-label').textContent = next === 'dark' ? 'Oscuro' : 'Claro';
-        }
-    </script>
 </body>
 </html>
