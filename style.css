@@ -77,15 +77,21 @@ nav a:hover {
     margin-block: 8px;
     border-radius: 6px;
     border: 1px solid #333;
+    background-color: #181818;
+    color: white;
 }
+
+input::placeholder{color: white;}
+
+#calcular{background-color: #0c80fc;
+color: white;
+font-weight: bolder;}
 
 #resultado {
     font-size: 1.2rem;
     font-weight: bold;
     margin-block: 15px;
-    color: #007bff; /* Color de acento para el resultado */
-}
-
+    color: #73b0f0; }
 /* ===================================================
    🔥 NUEVOS ESTILOS LLAMATIVOS PARA CONTENT-INFO
    =================================================== */
@@ -195,3 +201,11 @@ footer a {
     cursor: pointer;
     font-weight: bold;
 }
+
+
+.svg{fill: white;
+height: 30px;
+width: auto;}
+
+.nav-i{display: flex;
+flex-direction: column;}
