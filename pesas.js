@@ -20,18 +20,6 @@ const kilos = () => {
     resultado.textContent = "El peso es de: " + total + " libras";
 };
 
-const theme = () => {
-    const currentBg = getComputedStyle(body).backgroundColor;
 
-    if (currentBg === "rgb(20, 18, 18)") {
-        body.style.backgroundColor = "white";
-        body.style.color = "black";
-        document.querySelectorAll("a").forEach(a => a.style.color = "black");
-    } else {
-        body.style.backgroundColor = "#141212";
-        body.style.color = "white";
-        document.querySelectorAll("a").forEach(a => a.style.color = "white");
-    }
-};
 
 
