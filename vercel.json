@@ -1,5 +1,13 @@
 {
   "cleanUrls": true,
+    "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "strong-percent.vercel.app" }],
+      "destination": "https://strong-percent.cl/$1",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/sw.js",
